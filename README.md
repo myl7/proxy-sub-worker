@@ -277,3 +277,7 @@ One path covers every client, so a rotation means updating every client URL.
 - No response body, URL or proxy credential reaches a log line.
 - Rules are opaque. They pass through byte for byte, comments included.
 - The Worker never writes KV. Only `npm run seed` does, and only when you run it.
+
+## License
+
+Apache-2.0. See `LICENSE`.
