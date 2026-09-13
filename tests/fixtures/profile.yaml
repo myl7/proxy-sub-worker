@@ -1,0 +1,72 @@
+# Synthetic fixture. Mirrors the shape of a self-hosted profile rendered from
+# an ansible template. Every value here is fake: documentation IP ranges, reserved
+# .invalid hostnames, placeholder credentials. No real node, rule, or token.
+log-level: info
+mixed-port: 7890
+allow-lan: false
+ipv6: false
+mode: rule
+unified-delay: true
+profile:
+  store-selected: true
+  store-fake-ip: false
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080]
+    TLS:
+      ports: [443, 8443]
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  default-nameserver:
+    - 192.0.2.53
+  nameserver:
+    - https://dns.example.invalid/dns-query
+  fallback: []
+geodata-mode: true
+geo-auto-update: false
+geo-update-interval: 24
+geox-url:
+  geoip: https://geo.example.invalid/geoip.dat
+  geosite: https://geo.example.invalid/geosite.dat
+  mmdb: https://geo.example.invalid/country.mmdb
+proxies:
+  - name: placeholder-node-one
+    type: ss
+    server: 192.0.2.1
+    port: 10001
+    cipher: aes-128-gcm
+    password: placeholder-one
+  - name: placeholder-node-two
+    type: ss
+    server: 192.0.2.2
+    port: 10002
+    cipher: aes-128-gcm
+    password: placeholder-two
+proxy-groups:
+  - name: placeholder-group
+    type: select
+    proxies:
+      - placeholder-node-one
+      - placeholder-node-two
+rule-providers:
+  fake-provider:
+    type: http
+    behavior: domain
+    url: https://rules.example.invalid/fake-provider.yaml
+    path: ./ruleset/fake-provider.yaml
+    interval: 86400
+rules:
+  - "DOMAIN-SUFFIX,internal.example.invalid,default # pinned route"
+  - DOMAIN-SUFFIX,pinned.example.invalid,Alpha Node # manual pin
+  - GEOSITE,cn,cn
+  - GEOSITE,geolocation-!cn,proxy
+  - RULE-SET,fake-provider,default
+  - GEOIP,CN,cn,no-resolve
+  - GEOIP,JP,ai
+  - DOMAIN-SUFFIX,ai.example.invalid,ai
+  - MATCH,default

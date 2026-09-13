@@ -1,0 +1,23 @@
+{
+  "name": "proxy-sub-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "seed": "node scripts/seed-kv.mjs",
+    "push-secrets": "wrangler secret bulk .dev.vars",
+    "smoke": "SMOKE=1 vitest run tests/smoke.real.test.ts"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260911.1",
+    "@types/node": "^22.20.2",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0",
+    "wrangler": "^4.131.1"
+  }
+}

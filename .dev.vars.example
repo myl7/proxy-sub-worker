@@ -1,0 +1,9 @@
+# Copy to .dev.vars and fill in. .dev.vars is gitignored and must never be committed.
+# The exact request path the subscription is served on. It is the only credential,
+# so make it long and random. Leading slash required, trailing slash ignored.
+PROXY_SUB_PATH=/change-me-to-a-long-random-string
+PROFILE_URL=https://<profile-host>/<path>
+UPSTREAM_URL=https://<provider-host>/<path>
+# GROUPS_JSON={"groups":[...]}  # optional, overrides DEFAULT_POLICY
+# UPSTREAM_UA=mihomo/1.19.0    # optional, User-Agent sent to the upstream panel
+# CACHE_TTL_SECONDS=300

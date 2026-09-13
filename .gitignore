@@ -1,0 +1,9 @@
+node_modules/
+.wrangler/
+dist/
+*.log
+
+# Local files that carry credentials or account ids. The committed templates are
+# .dev.vars.example and wrangler.jsonc.example.
+.dev.vars
+wrangler.jsonc

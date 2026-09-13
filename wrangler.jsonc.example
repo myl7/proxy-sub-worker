@@ -1,0 +1,15 @@
+// Copy to wrangler.jsonc, then paste the id printed by
+// `npx wrangler kv namespace create PROXY_SUB_KV`. wrangler.jsonc itself is
+// gitignored, so your namespace id never reaches the repository.
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "proxy-sub-worker",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-09-01",
+	"kv_namespaces": [
+		{
+			"binding": "PROXY_SUB_KV",
+			"id": "REPLACE_WITH_KV_NAMESPACE_ID"
+		}
+	]
+}
